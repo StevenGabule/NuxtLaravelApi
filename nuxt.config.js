@@ -44,7 +44,22 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login:{url:'http://127.0.0.1:8000/api/login', method:'post', propertyName: 'meta.token'},
+          user:{url:'http://127.0.0.1:8000/api/user', method:'get', propertyName:'name'},
+          logout:{url:'http://127.0.0.1:8000/api/logout', method:'post'}
+        }
+      }
+    }
+  },
+
   /*
   ** Build configuration
   */
